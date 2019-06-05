@@ -1,0 +1,34 @@
+package:
+  name: conda_demo_bash
+  version: 0.0.0+wip
+
+about:
+  home: https://github.com/BCM-HGSC/conda_demo_bash
+  license: MIT
+  summary: Demo of packaging bash scripts with conda
+
+source:
+  path: ..
+
+build:
+  noarch: generic
+  script: cp bin/* "$PREFIX"/bin/
+
+requirements:
+  build:
+    - bash
+    - coreutils
+  run:
+    - bash
+    - coreutils
+    - conda_demo_py
+
+test:
+  source_files:
+    - tests
+  # requires:
+  #   - bash
+  #   - coreutils
+  #   - conda_demo_py
+  commands:
+    - bash tests/test.sh
